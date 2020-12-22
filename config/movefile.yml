@@ -1,0 +1,23 @@
+global:
+  sql_adapter: 'wpcli'
+local:
+  vhost: 'http://localhost:8080'
+  wordpress_path: '/var/www/html/'
+  database:
+    name: 'wordpress'
+    user: 'root'
+    password: 'wordpress'
+    host: 'database'
+    charset: 'utf8'
+production:
+  vhost: 'https://www.example.com'
+  wordpress_path: '/var/www/html/'
+  database:
+    name: 'db_user'
+    user: 'db_user'
+    password: 'db_password'
+    host: 'localhost'
+    charset: 'utf8'
+  ssh:
+    host: 'example.com'
+    user: 'ssh_user'
