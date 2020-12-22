@@ -1,0 +1,18 @@
+public/*
+!public/.gitkeep
+!public/wp-content/
+public/wp-content/*
+# !public/wp-content/uploads/
+# !public/wp-content/plugins/
+# !public/wp-content/themes/
+
+# ignore these plugins
+public/wp-content/plugins/hello.php
+
+# ignore specific themes
+public/wp-content/themes/twenty*/
+
+# ignore node dependency directories
+node_modules/
+
+.bash_history
