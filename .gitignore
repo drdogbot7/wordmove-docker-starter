@@ -1,10 +1,9 @@
 public/*
-!public/.gitkeep
 !public/wp-content/
 public/wp-content/*
-# !public/wp-content/uploads/
-# !public/wp-content/plugins/
-# !public/wp-content/themes/
+!public/wp-content/uploads/
+!public/wp-content/plugins/
+!public/wp-content/themes/
 
 # ignore these plugins
 public/wp-content/plugins/hello.php
