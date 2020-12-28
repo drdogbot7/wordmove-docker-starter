@@ -31,7 +31,6 @@ production:
     - ".gitmodules"
     - ".env"
     - "node_modules/"
-    - "bin/"
     - "tmp/*"
     - "Gemfile*"
     - "Movefile"
@@ -41,6 +40,8 @@ production:
     - "wp-config.php"
     - "wp-content/*.sql.gz"
     - "*.orig"
+    - "wp-content/themes/twenty*/"
+    - "wp-content/plugins/hello.php"
 
   # paths: # you can customize wordpress internal paths
   #   wp_content: wp-content

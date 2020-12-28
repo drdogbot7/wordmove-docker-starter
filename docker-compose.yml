@@ -1,28 +1,29 @@
-version: '3.6'
+version: "3.6"
 services:
   database:
     image: mysql:5.7
     command:
-      - '--character-set-server=utf8'
-      - '--collation-server=utf8_unicode_ci'
+      - "--character-set-server=utf8"
+      - "--collation-server=utf8_unicode_ci"
     ports:
-      - '3307:3306'
-    restart: on-failure:5
+      - "3307:3306"
     environment:
       MYSQL_USER: wordpress
       MYSQL_DATABASE: wordpress
       MYSQL_PASSWORD: wordpress
       MYSQL_ROOT_PASSWORD: wordpress
+    volumes:
+      - ./db:/var/lib/mysql
 
   wordpress:
     depends_on:
       - database
     image: wordpress:latest
     ports:
-      - '8080:80'
-    restart: on-failure:5
+      - "8080:80"
     volumes:
-      - ./public:/var/www/html
+      - wordpress:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
     environment:
       WORDPRESS_DB_HOST: database:3306
       WORDPRESS_DB_PASSWORD: wordpress
@@ -33,7 +34,6 @@ services:
     image: phpmyadmin/phpmyadmin
     ports:
       - 9000:80
-    restart: on-failure:5
     environment:
       PMA_HOST: database
 
@@ -42,9 +42,12 @@ services:
     depends_on:
       - wordpress
     image: welaika/wordmove
-    restart: on-failure:5
     volumes:
-      - ./config/.bashrc:/root/.bashrc
-      - ./config/movefile.yml:/html/movefile.yml
       - ~/.ssh:/root/.ssh:ro
-      - ./public:/var/www/html
+      - ./config/.bashrc:/root/.bashrc
+      - wordpress:/html
+      - ./config/movefile.yml:/html/movefile.yml
+      - ./wp-content:/html/wp-content
+
+volumes:
+  wordpress:
