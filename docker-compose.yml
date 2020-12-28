@@ -7,6 +7,10 @@ services:
       - "--collation-server=utf8_unicode_ci"
     ports:
       - "3307:3306"
+<<<<<<< HEAD
+=======
+    restart: on-failure:5
+>>>>>>> cc1ffbf7600cc42e3b5954fa10c6a991b94aa726
     environment:
       MYSQL_USER: wordpress
       MYSQL_DATABASE: wordpress
@@ -21,6 +25,10 @@ services:
     image: wordpress:latest
     ports:
       - "8080:80"
+<<<<<<< HEAD
+=======
+    restart: on-failure:5
+>>>>>>> cc1ffbf7600cc42e3b5954fa10c6a991b94aa726
     volumes:
       - wordpress:/var/www/html
       - ./wp-content:/var/www/html/wp-content
