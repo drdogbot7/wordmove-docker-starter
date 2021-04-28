@@ -25,7 +25,7 @@ services:
       - wordpress:/var/www/html
       - ./wp-content:/var/www/html/wp-content
       - ./config/custom.ini:/usr/local/etc/php/conf.d/custom.ini
-      environment:
+    environment:
       WORDPRESS_DB_HOST: database:3306
       WORDPRESS_DB_PASSWORD: wordpress
 
@@ -46,9 +46,11 @@ services:
     volumes:
       - ~/.ssh:/root/.ssh:ro
       - ./config/.bashrc:/root/.bashrc
-      - wordpress:/html
+      - wordpress:/var/www/html
       - ./config/movefile.yml:/html/movefile.yml
       - ./wp-content:/html/wp-content
+    working_dir: /var/www/html
+    user: www-data:www-data
 
 volumes:
   wordpress:
