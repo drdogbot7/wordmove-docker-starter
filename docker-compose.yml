@@ -47,10 +47,9 @@ services:
       - ~/.ssh:/root/.ssh:ro
       - ./config/.bashrc:/root/.bashrc
       - wordpress:/var/www/html
-      - ./config/movefile.yml:/html/movefile.yml
-      - ./wp-content:/html/wp-content
+      - ./config/movefile.yml:/var/www/html/movefile.yml
+      - ./wp-content:/var/www/html/wp-content
     working_dir: /var/www/html
-    user: www-data:www-data
 
 volumes:
   wordpress:
