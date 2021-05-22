@@ -1,6 +1,9 @@
 # comment out to commit database
 db
 
+# ignore useless index.php
+wp-content/index.php
+
 # comment out to commit plugins
 wp-content/plugins/
 
