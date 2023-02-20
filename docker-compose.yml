@@ -48,7 +48,7 @@ services:
       - wordpress
     image: welaika/wordmove
     volumes:
-      - ~/.ssh:/root/.ssh:ro
+      - ~/.ssh:/tmp/.ssh:ro
       - ./config/.bashrc:/root/.bashrc
       - wordpress:/var/www/html
       - ./config/movefile.yml:/var/www/html/movefile.yml
