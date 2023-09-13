@@ -1,4 +1,12 @@
-version: "3.6"
+version: "3.9"
+
+x-wordpress-env: &wordpress-env
+  WORDPRESS_DB_HOST: database:3306
+  WORDPRESS_DB_USER: wordpress
+  WORDPRESS_DB_PASSWORD: wordpress
+  WP_CLI_ALLOW_ROOT: 1
+  WP_ENVIRONMENT_TYPE: development
+
 services:
   database:
     image: mysql:5.7
@@ -16,6 +24,7 @@ services:
       - ./db:/var/lib/mysql
 
   wordpress:
+    environment: *wordpress-env
     depends_on:
       - database
     build: ./docker/wordpress
@@ -25,12 +34,6 @@ services:
       - wordpress:/var/www/html
       - ./wp-content:/var/www/html/wp-content
       - ./config/custom.ini:/usr/local/etc/php/conf.d/custom.ini
-    environment:
-      WORDPRESS_DB_HOST: database:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-      WP_CLI_ALLOW_ROOT: 1
-      WP_ENVIRONMENT_TYPE: development
 
   phpmyadmin:
     depends_on:
@@ -43,6 +46,7 @@ services:
       UPLOAD_LIMIT: 1G
 
   wordmove:
+    environment: *wordpress-env
     tty: true
     depends_on:
       - wordpress
