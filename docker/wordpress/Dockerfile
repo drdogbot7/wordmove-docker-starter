@@ -2,7 +2,7 @@
 # Installs WordPress with wp-cli (wp.cli.org) installed
 # Based on: https://github.com/conetix/docker-wordpress-wp-cli
 
-FROM wordpress:php8.0
+FROM wordpress:latest
 
 # Install less and mysql-client utilities 
 RUN apt-get update && apt-get install -y less default-mysql-client

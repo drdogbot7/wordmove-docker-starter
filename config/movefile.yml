@@ -3,24 +3,24 @@ global:
 
 local:
   vhost: http://localhost:8080
-  wordpress_path: /var/www/html # use an absolute path here
+  wordpress_path: <%= ENV['WORDMOVE_WORKDIR'] %> # use an absolute path here
 
   database:
     name: "wordpress"
-    user: "root"
-    password: "wordpress" # could be blank, so always use quotes around
+    user: "wordpress"
+    password: "wordpress"
     host: "database"
     charset: "utf8"
 
 production:
-  vhost: http://example.com
+  vhost: https://www.example.com
   wordpress_path: /var/www/html # use an absolute path here
 
   database:
     name: database_name
     user: user
     password: password
-    host: host
+    host: localhost
     # port: 3308 # Use just in case you have exotic server config
     # mysqldump_options: '--max_allowed_packet=1G' # Only available if using SSH
     # mysql_options: '--protocol=TCP' # mysql command is used to import db
@@ -44,6 +44,7 @@ production:
     - "wp-content/plugins/hello.php"
 
   # paths: # you can customize wordpress internal paths
+  #   wp_config: /var/www/html/wp-config.php
   #   wp_content: wp-content
   #   uploads: wp-content/uploads
   #   plugins: wp-content/plugins
@@ -61,14 +62,6 @@ production:
   #     host: host
   #     user: user
   #     password: password # password is optional, will use public keys if available.
-
-  # ftp:
-  #   user: user
-  #   password: password
-  #   host: host
-  #   passive: true
-  #   port: 21 # Port is optional
-  #   scheme: ftps # default `ftp`. alternative `sftp`
 
   # hooks: # Remote hooks won't work with FTP
   #   push:
